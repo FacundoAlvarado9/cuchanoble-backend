@@ -1,0 +1,16 @@
+<!DOCTYPE html><html>
+<head>
+	<title>{% block title %} Cucha Noble {% endblock title %} </title>
+
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static "perros/style.css" %}">
+
+
+<body class="body-cas">
+	<div class="content">
+		{% block content %}
+		{% endblock content %}
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{perroDetalle.direccion}}</title>
+</head>
+<body>
+
+{{perroDetalle.direccion}}<br>
+{{perroDetalle.estado}}<br>
+{{perroDetalle.tamano}}<br>
+{{perroDetalle.subido_el}}<br>
+{{perroDetalle.encontro_casa}}<br>
+{{perroDetalle.contacto}}<br>
+Subido por: {{subido}}<br>
+
+	<a href="{% url "perros:editar" id=perroDetalle.id %}">Editar</a>
+
+{{pe.author.id}}
+
+
+</body>
+</html>

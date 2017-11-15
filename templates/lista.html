@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+<title>{% block title %}Lista de Perros | {{block.super}}{% endblock title %}</title>
+
+{% block content %}
+<h1>Lista de perros buscando hogar</h1>
+
+		<ul>
+			{% for obj in queryset %}
+			<li>
+				<a href="{% url "perros:detalles" id=obj.id %}">
+				{{obj.estado}}
+				</a>
+			</li>
+			{% endfor %}
+
+	</ul>
+
+<a href="{% url "perros:subir" %}"><h3>Subí un perro!</h3></a>
+
+{{user.first_name}}
+
+
+
+{% endblock content %}
+
+
+
