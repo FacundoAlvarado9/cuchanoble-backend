@@ -22,7 +22,7 @@ from perros import views as perrosviews
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include("perros.urls", namespace="perros")),
-	url(r'^accounts/', include('allauth.urls')),
+	url(r'^accounts/', include('allauth.urls'),),
 
 
 ]

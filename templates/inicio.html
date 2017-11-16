@@ -2,7 +2,18 @@
 <!--{% load static %}-->
 {% block content %}
 
-<h1>¡Bienvenido a Cucha Noble!</h1>
+
+<!-- Template inicio -->
+<div style="background-image: url(https://i.imgur.com/MYkAQWc.jpg);">
+<div class="container">
+    <div class="valign-wrapper mainsection">
+        <div class="center-align">
+        <h1 class="center-align">¡Bienvenido a Cucha Noble!</h1>
+        <a class="waves-effect waves-light btn" href="{% url "perros:lista" %}">Ver lista de perros buscando familia</a>
+        </div>
+    </div>
+</div>
+</div>
 
 <a href="{% url "perros:lista" %}">Ver lista de perros</a>
 
