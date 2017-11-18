@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
+ {% load materializecss %}
 <title>{% block title %} Subir | {{block.super}} {% endblock title %}</title>
- 
+
  {% block content %}
+
 	<form method="POST" action="">{% csrf_token %}
-	{{ form.as_p }}
+
+	{{ form.sexo }}
 	<input type="submit" value="Subir Perro">
 	</form>
 
