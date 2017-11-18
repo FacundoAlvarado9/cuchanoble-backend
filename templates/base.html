@@ -1,5 +1,6 @@
 <!DOCTYPE html><html>
 <head>
+	 <meta charset="utf-8">
 	<title>{% block title %} Cucha Noble {% endblock title %} </title>
 
 {% load static %}
@@ -18,7 +19,7 @@
 
 
 <!-- Header -> Navbar -->
-	<header>
+	<header style="margin-bottom: 2em;">
 		<nav class="orange darken-1">
 			<div class="nav-wrapper container">
 				<a href="{% url "perros:index" %}" class="brand-logo">Cucha Noble</a>
@@ -36,6 +37,11 @@
 		<!--Import jQuery before materialize.js-->
 			<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 			<script type="text/javascript" src="js/materialize.min.js"></script>
+			<script>
+			   $(document).ready(function() {
+				  $('select').material_select();
+			  });
+			</script>
 		<div class="container">
 			{% block content %}
 			{% endblock content %}
