@@ -1,14 +1,33 @@
 {% extends "base.html" %}
-
  {% load materializecss %}
+ {% load widget_tweaks %}
 <title>{% block title %} Subir | {{block.super}} {% endblock title %}</title>
 
  {% block content %}
 
-	<form method="POST" action="">{% csrf_token %}
+<div class="container">
+    <h4 >Rellená el formulario</h4>
+    <hr style="margin-bottom: 2em;">
+</div>
+<div class="container">
+    <div class="card">
+        <div class="card-content">
+    	    <form method="POST" action="">{% csrf_token %}
+                {% render_field form.direccion placeholder="Barrio" style="margin-bottom: 2em;" %}
+                {{form.edad.label_tag}}
+                {% render_field form.edad class+="browser-default" style="margin-bottom: 2em;" %}
+                {{form.sexo.label_tag}}
+                {% render_field form.sexo class+="browser-default" style="margin-bottom: 2em;" %}
+                {{form.tamano.label_tag}}
+                {% render_field form.tamano class+="browser-default" style="margin-bottom: 2em;" %}
+                {{form.estado.label_tag}}
+                {% render_field form.estado class+="browser-default" style="margin-bottom: 2em;" %}
+                {% render_field form.contacto placeholder="Teléfono de contacto" style="margin-bottom: 2em;" %}
+    	    <input class="btn" type="submit" value="Subir Perro">
+    	</form>
+        </div>
+    </div>
+</div>
 
-	{{ form.sexo }}
-	<input type="submit" value="Subir Perro">
-	</form>
 
 {% endblock content %}
