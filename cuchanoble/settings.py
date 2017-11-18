@@ -51,6 +51,9 @@ INSTALLED_APPS = [
 
     #MaterializeCSS forms
     'materializecssform',
+
+    #FormTweaks
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
