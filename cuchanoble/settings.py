@@ -49,9 +49,6 @@ INSTALLED_APPS = [
     #Author
     'author',
 
-    #MaterializeCSS forms
-    'materializecssform',
-
     #FormTweaks
     'widget_tweaks',
 ]
