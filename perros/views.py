@@ -30,14 +30,14 @@ def perros_subir(request):
 	#CONDICION: El usuario debe estar logueado para acceder al formualrio de cracion
 	if request.user.is_authenticated():
 		form = PerroForm(request.POST or None)
-		#Si el formulario es valido (está lleno)
+		#Si el formulario es valido (esta lleno)
 		if form.is_valid():
 			instance = form.save(commit=False)
 			#Se guarda como objeto
 			instance.save()
 			#Posteriormente se redirecciona a la lista
 			return HttpResponseRedirect(reverse('perros:lista'))
-			
+
 		context = {
 			"form": form,
 		}
