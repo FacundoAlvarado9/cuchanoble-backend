@@ -51,6 +51,9 @@ INSTALLED_APPS = [
 
     #FormTweaks
     'widget_tweaks',
+
+    #DjangoRestFramework
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -183,4 +186,9 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.5',
     }
+}
+
+#REST rest_framework
+REST_FRAMEWORK = {
+    
 }
