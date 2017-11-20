@@ -1,0 +1,4 @@
+Django==1.11.7
+django_author==1.0.1
+django-allauth==0.34.0
+django-widget-tweaks=1.4.1
