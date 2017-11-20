@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth import models
 
+from rest_framework import viewsets
+from .serializers import PerroSerializer
+
 from .models import Perro
 from .forms import PerroForm
 from .forms import PerroEditarForm

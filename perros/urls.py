@@ -24,7 +24,6 @@ from .views import (
   perros_inicio,
   )
 
-
 urlpatterns = [
 
    	#CRUD
@@ -35,6 +34,6 @@ urlpatterns = [
     url(r'^borrar/$', perros_borrar, name='borrar'),
     url(r'^editar/(?P<id>\d+)/$', perros_actualizar, name='editar'),
 
-    
+
 
 ]
