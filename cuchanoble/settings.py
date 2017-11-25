@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['cuchanoble.herokuapp.com']
+ALLOWED_HOSTS = ['cuchanoble.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -50,6 +50,9 @@ INSTALLED_APPS = [
 
     #FormTweaks
     'widget_tweaks',
+
+    #Django rest
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

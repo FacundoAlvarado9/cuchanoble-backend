@@ -7,6 +7,12 @@ from .models import Perro
 from .forms import PerroForm
 from .forms import PerroEditarForm
 
+#Importando lo necesario para el rest
+from rest_framework.views import APIView #Modelo de View que devuelve JSON
+from rest_framework.response import Response #Cosa magica que devuelve JSON ante la solicitud
+from rest_framework import status
+from .serializers import PerroSerializer
+
 # Views.
 
 #Index - Landing Page
@@ -79,3 +85,15 @@ def perros_detalles(request, id):
 		#"perroDetalle": Perro.objects.get(id=id)
 	}
 	return render(request, "detalles.html", context)
+
+#Hace lista de todos los perros, o crea uno nuevo
+class PerroList(APIView):
+
+	def get(self, request):
+		perros = Perro.objects.all()
+		serializer = PerroSerializer(perros, many=True)
+		return Response(serializer.data)
+
+
+	def post(self):
+		pass

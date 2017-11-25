@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.urlpatterns import format_suffix_patterns
 from .views import (
   perros_display,
   perros_subir,
@@ -22,6 +23,7 @@ from .views import (
   perros_actualizar,
   perros_detalles,
   perros_inicio,
+  PerroList,
   )
 
 
@@ -34,7 +36,8 @@ urlpatterns = [
     url(r'^subir/$', perros_subir, name='subir'),
     url(r'^borrar/$', perros_borrar, name='borrar'),
     url(r'^editar/(?P<id>\d+)/$', perros_actualizar, name='editar'),
-
-    
+    url(r'^json/$', PerroList.as_view()),
 
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
