@@ -90,7 +90,7 @@ def perros_detalles(request, id):
 class PerroList(APIView):
 
 	def get(self, request):
-		perros = Perro.objects.all()
+		perros = Perro.objects.filter(encontro_casa=False)
 		serializer = PerroSerializer(perros, many=True)
 		return Response(serializer.data)
 
