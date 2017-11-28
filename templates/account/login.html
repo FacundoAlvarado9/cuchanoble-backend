@@ -38,11 +38,12 @@
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu contraseña?" %}</a>
-      <button class="primaryAction" type="submit">{% trans "Iniciar Sesión" %}</button>
+      <button class="primaryAction waves-effect waves-light btn" type="submit">{% trans "Iniciar Sesión" %}</button>
     </form>
 
-    <a href="{% provider_login_url "facebook" method="oauth2" %}">Ingresar con facebook</a>
+
+    <a href="{% provider_login_url "facebook" method="oauth2" %}" class="waves-effect waves-light btn indigo darken-2">Registrate con Facebook</a>
+          <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu contraseña?" %}</a>
 
 </div>
 

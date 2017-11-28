@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>{{perroDetalle.direccion}}</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
 
 {{perroDetalle.direccion}}<br>
 {{perroDetalle.estado}}<br>
@@ -17,6 +14,4 @@ Subido por: {{subido}}<br>
 
 {{pe.author.id}}
 
-
-</body>
-</html>
+{% endblock %}
