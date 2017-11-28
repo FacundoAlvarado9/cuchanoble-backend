@@ -24,7 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['cuchanoble.herokuapp.com', 'localhost']
+=======
+ALLOWED_HOSTS = ['cuchanoble.herokuapp.com',
+                'localhost']
+>>>>>>> master
 
 
 # Application definition
