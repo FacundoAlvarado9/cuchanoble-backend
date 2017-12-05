@@ -24,6 +24,7 @@ from .views import (
   perros_detalles,
   perros_inicio,
   PerroList,
+  PerroListCreate,
   )
 
 
@@ -37,7 +38,7 @@ urlpatterns = [
     url(r'^borrar/$', perros_borrar, name='borrar'),
     url(r'^editar/(?P<id>\d+)/$', perros_actualizar, name='editar'),
     url(r'^json/$', PerroList.as_view()),
-
+    url(r'^jsoncreate/$', PerroListCreate.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

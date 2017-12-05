@@ -38,10 +38,12 @@ class Perro(models.Model):
 	tamano = models.CharField(max_length=15, choices=TAMANO_CHOICES, default='mediano')
 	estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='buen estado')
 	contacto = models.CharField(max_length=15, default='')
-	subido_por = models.CharField(max_length=50, null=True)
 	encontro_casa = models.BooleanField(default=False)
 	subido_el = models.DateTimeField(auto_now_add=True, auto_now=False)
 	actualizado_el = models.DateTimeField(auto_now=True, auto_now_add=False)
+
+	# #Imagen test
+	imagen = models.ImageField(upload_to='pics', null=True, blank=True)
 
 	def __str__(self):
 		return self.direccion + "-" + self.estado

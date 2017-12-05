@@ -8,7 +8,8 @@ from .forms import PerroForm
 from .forms import PerroEditarForm
 
 #Importando lo necesario para el rest
-from rest_framework.views import APIView #Modelo de View que devuelve JSON
+from rest_framework.generics import ListAPIView, CreateAPIView #Modelo de View que devuelve JSON
+from rest_framework.views import APIView
 from rest_framework.response import Response #Cosa magica que devuelve JSON ante la solicitud
 from rest_framework import status
 from .serializers import PerroSerializer
@@ -87,17 +88,14 @@ def perros_detalles(request, id):
 	return render(request, "detalles.html", context)
 
 #Hace lista de todos los perros, o crea uno nuevo
-class PerroList(APIView):
+class PerroList(ListAPIView):
+	queryset = Perro.objects.filter(encontro_casa=False)
+	serializer_class = PerroSerializer #(queryset, many=True)
 
-	def get(self, request):
-		perros = Perro.objects.filter(encontro_casa=False)
-		serializer = PerroSerializer(perros, many=True)
-		return Response(serializer.data)
-
-
+class PerroListCreate(APIView):
 	def post(self, request, format=None):
 		serializer = PerroSerializer(data=request.data)
-		if serializer.is_valid():
+		if (serializer.is_valid()) and (request.user.is_authenticated()):
 			serializer.save()
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

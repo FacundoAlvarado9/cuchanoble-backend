@@ -11,6 +11,7 @@ class PerroForm(forms.ModelForm, forms.Form):
 			"tamano",
 			"estado",
 			'contacto',
+			'imagen',
 			#"encontro_casa",
 		]
 
