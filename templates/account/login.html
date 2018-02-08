@@ -1,0 +1,50 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{% trans "Inicia Sesión" %}</h1>
+
+    {% get_providers as socialaccount_providers %}
+
+    {% if socialaccount_providers %}
+    <p>{% blocktrans with site.name as site_name %}Inicia sesión para interactuar. Si no tienes una cuenta, <a href="{{ signup_url }}">crea una</a>
+    . O entra con facebook!{% endblocktrans %}</p>
+    <!--
+    <div class="socialaccount_ballot">
+
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+
+      <div class="login-or">{% trans 'or' %}</div>
+
+    </div>
+    -->
+    {% include "socialaccount/snippets/login_extra.html" %}
+
+    {% else %}
+    <p>{% blocktrans %}Para subir perros debes tener una cuenta, si no tenés:
+    <a href="{{ signup_url }}">Create una!</a>{% endblocktrans %}</p>
+    {% endif %}
+
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <button class="primaryAction waves-effect waves-light btn" type="submit">{% trans "Iniciar Sesión" %}</button>
+    </form>
+
+
+    <a href="{% provider_login_url "facebook" method="oauth2" %}" class="waves-effect waves-light btn indigo darken-2">Registrate con Facebook</a>
+          <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu contraseña?" %}</a>
+
+</div>
+
+{% endblock %}

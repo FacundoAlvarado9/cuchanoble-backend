@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<title>{% block title %}Lista de Perros | {{block.super}}{% endblock title %}</title>
+
+{% block content %}
+
+<div style="margin-top: 2em;">
+	<h3>Lista de perros buscando hogar</h3>
+	<hr style="margin-bottom: 1em;">
+</div>
+
+<!-- Para cada perro en el queryset, hacer un elemento de lista -->
+
+{% for obj in queryset %}
+
+<div class="row">
+        <div class="col s12 m12 l6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">Estoy en {{obj.direccion}}</span>
+              <p>¡Hola! Estoy buscando una familia, soy {{obj.sexo}} y soy un {{obj.edad}}</p>
+            </div>
+            <div class="card-action">
+              <a href="{% url "perros:detalles" id=obj.id %}">Más detalles</a>
+              <!-- <a href="#">This is a link</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+{% endfor %}
+
+<!-- Subí un perro - Botón -->
+<a href="{% url "perros:subir" %}" class="waves-effect waves-light btn"><i class="material-icons left">pets</i> ¡Subí un perro!</a>
+
+<!-- {{user.first_name}} -->
+
+
+
+{% endblock content %}

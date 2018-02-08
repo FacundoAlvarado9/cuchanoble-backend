@@ -1,0 +1,3 @@
+*.vEnv
+*.sqlite3
+*pyc

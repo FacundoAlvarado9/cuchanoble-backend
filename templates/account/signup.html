@@ -1,0 +1,24 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Registar una nueva cuenta" %}</h1>
+
+<p>{% blocktrans %}¿Ya tenes una cuenta? Entonces <a href="{{ login_url }}">iniciá sesión</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit" class="waves-effect waves-light btn" style="margin-bottom: 1em;">{% trans "Registrarse" %} &raquo;</button>
+</form>
+
+{% load account socialaccount %}
+    <a href="{% provider_login_url "facebook" method="oauth2" %}" class="waves-effect waves-light btn indigo darken-2">Registrate con Facebook</a>
+
+{% endblock %}
