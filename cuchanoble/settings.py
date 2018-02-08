@@ -25,10 +25,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['cuchanoble.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['cuchanoble.herokuapp.com', 'localhost', '127.0.0.1']
 
 ALLOWED_HOSTS = ['cuchanoble.herokuapp.com',
-                'localhost']
+                'localhost', '127.0.0.1']
 
 
 # Application definition
