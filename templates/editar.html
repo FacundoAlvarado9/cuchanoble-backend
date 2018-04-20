@@ -12,8 +12,13 @@
 <div class="container">
     <div class="card">
         <div class="card-content">
-    	    <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+    	    <form method="POST" action="">{% csrf_token %}
             <!-- Form para completar al editar -->
+              <!-- Checkear si encontro casa -->
+              <h5>Si el perro encontró casa, por favor, <b>chequeá esta casilla</b> y da click en guardar</h5>
+                {% render_field form.encontro_casa placeholder="¿Encontro casa?" style="margin-bottom: 2em;" %}
+                {{form.encontro_casa.label_tag}}
+            <hr>
                 {% render_field form.direccion placeholder="Barrio" style="margin-bottom: 2em;" %}
                 {{form.edad.label_tag}}
                 {% render_field form.edad class+="browser-default" style="margin-bottom: 2em;" %}
@@ -24,13 +29,12 @@
                 {{form.estado.label_tag}}
                 {% render_field form.estado class+="browser-default" style="margin-bottom: 2em;" %}
                 {% render_field form.contacto placeholder="Número de contacto" style="margin-bottom: 2em;" %}
-                <h5>Subi tu imagen</h5>
-                <p>Presiona el boton "Subir Archivo" y sacá o seleccioná una foto</p>
+                <p><b>Cambiar la imagen</b></p>
+                <p><i>Presioná el boton "Subir Archivo" y sacá o seleccioná una foto</i></p>
                 {% render_field form.imagen class+="btn" style="margin-bottom: 2em;" %}
                 <hr>
-    	    <input class="btn" type="submit" value="Subir Perro">
+    	    <input class="btn" type="submit" value="Guardar">
     	</form>
-
         </div>
     </div>
 </div>

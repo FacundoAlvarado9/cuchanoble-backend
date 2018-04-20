@@ -25,7 +25,8 @@ class PerroEditarForm(forms.ModelForm, forms.Form):
 			"tamano",
 			"estado",
 			'contacto',
-			"encontro_casa",
+			'imagen',
+			'encontro_casa',
 		]
 
 

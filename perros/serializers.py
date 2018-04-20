@@ -8,4 +8,4 @@ class PerroSerializer(serializers.ModelSerializer):
     #De donde vamos a sacar el modelo
     class Meta:
         model = Perro
-        fields = ('direccion', 'sexo', 'edad', 'tamano', 'estado', 'contacto')
+        fields = ('direccion', 'sexo', 'edad', 'tamano', 'estado', 'contacto', 'imagen')

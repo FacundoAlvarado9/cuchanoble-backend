@@ -57,7 +57,13 @@ INSTALLED_APPS = [
 
     #Django rest
     'rest_framework',
+
+    #AWS S3 packages
+    'storages',
 ]
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,6 +81,7 @@ ROOT_URLCONF = 'cuchanoble.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #UBicacion de los templates html
         'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,16 +137,44 @@ USE_L10N = True
 
 USE_TZ = True
 
+################## AWS S3 #############################
+
+#Estableciendo parametros
+AWS_ACCESS_KEY_ID = 'AKIAIR7MRHC2UBSSKRXA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'cuchanoble-static'
+AWS_UPLOAD_GROUP = 'cuchanoble-assets-s3 '
+AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
+AWS_QUERYSTRING_AUTH = False
+S3DIRECT_REGION = 'sa-east-1'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+STATIC_ROOT = 'staticfiles'
+# Nueva URL de archivos estaticos
+# STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.' + 's3.amazonaws.com/'
+STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+# STATIC_URL = '/static/'
 
-#Imagenes
+#nueva URL de archivos media
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = '/pics/'
+MEDIA_URL = STATIC_URL + 'media/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+################### AUTENTICACION ########################
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
@@ -148,20 +183,21 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = "/"
-SIGNUP_REDIRECT_URL = "/"
-#allauth MODIFIERS
+# A donde me lleva la pagina luego de...
+LOGIN_REDIRECT_URL = "/subir/"
+SIGNUP_REDIRECT_URL = "/subir/"
 
-#No Username - Email priority
+#Estableciendo prioridad de email en lugar de nombre de usuario
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/subir'
 ACCOUNT_EMAIL_VERIFICATION = 'None'
 
-#Custom Signup
+#Formulario personalizado de registro
 ACCOUNT_SIGNUP_FORM_CLASS = 'perros.forms.SignupForm'
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {

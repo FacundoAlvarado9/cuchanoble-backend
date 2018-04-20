@@ -72,7 +72,7 @@ def perros_actualizar(request, id=None):
 		"form": form,
 		#"perroDetalle": Perro.objects.get(id=id)
 	}
-	return render(request, "subir.html", context)
+	return render(request, "editar.html", context)
 
 #RETRIEVE2
 def perros_detalles(request, id):

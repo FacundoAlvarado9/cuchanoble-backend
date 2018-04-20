@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from author.decorators import with_author
+from s3upload.fields import S3UploadField
 
 
 # Create your models here.
@@ -43,7 +44,8 @@ class Perro(models.Model):
 	actualizado_el = models.DateTimeField(auto_now=True, auto_now_add=False)
 
 	# #Imagen test
-	imagen = models.ImageField(upload_to='pics', null=True, blank=True)
+	imagen = models.ImageField(upload_to='perros', null=True, blank=True)
+	#imagen = S3UploadField(dest='example')
 
 	def __str__(self):
 		return self.direccion + "-" + self.estado

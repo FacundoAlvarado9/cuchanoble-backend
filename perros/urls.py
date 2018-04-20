@@ -39,6 +39,8 @@ urlpatterns = [
     url(r'^editar/(?P<id>\d+)/$', perros_actualizar, name='editar'),
     url(r'^json/$', PerroList.as_view()),
     url(r'^jsoncreate/$', PerroListCreate.as_view()),
+
+    url(r'^s3upload/', include('s3upload.urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
