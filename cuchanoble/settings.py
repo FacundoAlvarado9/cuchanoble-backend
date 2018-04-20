@@ -137,10 +137,10 @@ USE_TZ = True
 ################## AWS S3 #############################
 
 #Estableciendo parametros
-AWS_ACCESS_KEY_ID = 'AKIAIR7MRHC2UBSSKRXA'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'cuchanoble-static'
-AWS_UPLOAD_GROUP = 'cuchanoble-assets-s3 '
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_UPLOAD_GROUP = config('AWS_UPLOAD_GROUP')
 AWS_S3_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 AWS_QUERYSTRING_AUTH = False
 S3DIRECT_REGION = 'sa-east-1'
