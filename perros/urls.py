@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
+from django.conf.urls.static import static
+from django.conf import settings
 from .views import (
   perros_display,
   perros_subir,
@@ -41,6 +43,6 @@ urlpatterns = [
     url(r'^jsoncreate/$', PerroListCreate.as_view()),
 
     url(r'^s3upload/', include('s3upload.urls')),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+# urlpatterns = format_suffix_patterns(urlpatterns)

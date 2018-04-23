@@ -44,7 +44,7 @@ class Perro(models.Model):
 	actualizado_el = models.DateTimeField(auto_now=True, auto_now_add=False)
 
 	# #Imagen test
-	imagen = models.ImageField(upload_to='perros', null=True, blank=True)
+	imagen = models.ImageField(upload_to='perros', null=False, blank=False)
 	#imagen = S3UploadField(dest='example')
 
 	def __str__(self):

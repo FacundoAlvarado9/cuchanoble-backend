@@ -12,6 +12,7 @@
 <div class="container">
     <div class="card">
         <div class="card-content">
+
     	    <form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
             <!-- Form para completar al editar -->
                 {% render_field form.direccion placeholder="Barrio" style="margin-bottom: 2em;" %}

@@ -15,6 +15,12 @@ class PerroForm(forms.ModelForm, forms.Form):
 			#"encontro_casa",
 		]
 
+# class PerroFormTest(forms.Form):
+# 	direccion = forms.CharField(max_length=100)
+# 	sexo = forms.CharField(max_length=10, widget=forms.Select(choices=SEXO_CHOICES),)
+# 	edad = forms.CharField(max_length=8, widget=forms.Select(choices=EDAD_CHOICES),)
+
+
 class PerroEditarForm(forms.ModelForm, forms.Form):
 	class Meta:
 		model = Perro
