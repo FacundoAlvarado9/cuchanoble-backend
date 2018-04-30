@@ -106,9 +106,20 @@ WSGI_APPLICATION = 'cuchanoble.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
+# DATABASES = {
+#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+#  }
+
 DATABASES = {
-    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
- }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_db',
+        'USER': 'db_user_cuchanoble',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',                      # Set to empty string for default.
+    }
+}
 
 
 # Password validation
