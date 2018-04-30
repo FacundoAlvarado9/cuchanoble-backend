@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 	<!-- MATERIALIZE JS-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 	<!--Import Google Icon Font-->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -26,6 +26,11 @@
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="{% url "perros:lista" %}">Perros</a></li>
 					<li><a href="{% url "perros:subir" %}">Subir Perro</a></li>
+					{% if request.user.is_superuser %}
+					<li><a href="{% url "perros:moderacion" %}">Moderar</a></li>
+					{% endif %}
+
+
 				</ul>
 			</div>
 		</nav>

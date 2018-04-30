@@ -12,6 +12,11 @@
 Subido por: {{subido}}<br>
 
 	<a href="{% url "perros:editar" id=perroDetalle.id %}">Editar</a>
+	{% if request.user.is_superuser %}
+	<form method="POST" action="{% url "perros:borrar" pk=perroDetalle.pk %}">
+   	{% csrf_token %}<input type="submit" value="DELETE">
+	</form>
+	{% endif %}
 
 {{pe.author.id}}
 

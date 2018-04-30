@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'perros',
 
-    #allauth
+    #Autenticacion
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+
+    'rest_auth',
 
     #Author
     'author',
@@ -54,11 +56,18 @@ INSTALLED_APPS = [
 
     #Django rest
     'rest_framework',
+    'rest_framework.authtoken',
 
     #AWS S3 packages
     'storages',
 ]
 
+# Rest framwork - autenticacion
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 
 
@@ -161,7 +170,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = STATIC_URL + 'media/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static/"),
 )
 
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
@@ -189,6 +198,8 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# Eliminando paso intermedio al cerrar sesion
+ACCOUNT_LOGOUT_ON_GET =  True
 LOGIN_REDIRECT_URL = '/subir'
 ACCOUNT_EMAIL_VERIFICATION = 'None'
 

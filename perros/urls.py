@@ -21,12 +21,15 @@ from django.conf import settings
 from .views import (
   perros_display,
   perros_subir,
-  perros_borrar,
   perros_actualizar,
   perros_detalles,
   perros_inicio,
-  PerroList,
-  PerroListCreate,
+  perros_borrar,
+  perros_moderacion,
+  perros_moderacion_editar,
+  perros_borrar_moderacion,
+  perros_api_listar,
+  perros_api_crear,
   )
 
 
@@ -34,15 +37,21 @@ urlpatterns = [
 
    	#CRUD
     url(r'^$', perros_inicio, name='index'),
-    url(r'^perros/$', perros_display, name='lista'),
-    url(r'^detalles/(?P<id>\d+)/$', perros_detalles, name='detalles'),
-    url(r'^subir/$', perros_subir, name='subir'),
-    url(r'^borrar/$', perros_borrar, name='borrar'),
-    url(r'^editar/(?P<id>\d+)/$', perros_actualizar, name='editar'),
-    url(r'^json/$', PerroList.as_view()),
-    url(r'^jsoncreate/$', PerroListCreate.as_view()),
+    url(r'^perros/lista/$', perros_display, name='lista'),
+    url(r'^perros/detalles/(?P<id>\d+)/$', perros_detalles, name='detalles'),
+    url(r'^perros/subir/$', perros_subir, name='subir'),
+    url(r'^perros/(?P<pk>\d+)/borrar/$', perros_borrar.as_view(), name='borrar'),
+    url(r'^perros/(?P<id>\d+)/editar/$', perros_actualizar, name='editar'),
 
-    url(r'^s3upload/', include('s3upload.urls')),
+    # RESTful API
+    url(r'^rest-auth/', include('rest_auth.urls')),
+    url(r'^perros/api/$', perros_api_listar.as_view()),
+    url(r'^perros/api/crear$', perros_api_crear.as_view()),
+
+    # moderacion
+    url(r'^perros/moderar/$', perros_moderacion, name='moderacion'),
+    url(r'^perros/moderar/(?P<pk>\d+)/$', perros_moderacion_editar, name='editar-mod'),
+    url(r'^perros/moderar/(?P<pk>\d+)/borrar$', perros_borrar_moderacion.as_view(), name='borrar'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # urlpatterns = format_suffix_patterns(urlpatterns)

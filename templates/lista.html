@@ -11,6 +11,19 @@
 
 <!-- Para cada perro en el queryset, hacer un elemento de lista -->
 
+<!-- Mensajes (exito) -->
+{% if mensajes %}
+	{% for mensaje in mensajes %}
+		{% if mensaje.level == 26 %}
+		<div class="col s12 m12 l6">
+			<div class="card-panel green accent-3" style="padding: 0.5em;">
+				<p style="color: #595959;">{{ mensaje }}</p>
+			</div>
+		</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
 {% for obj in queryset %}
 
 <div class="row">

@@ -15,6 +15,9 @@
     	    <form method="POST" action="">{% csrf_token %}
             <!-- Form para completar al editar -->
               <!-- Checkear si encontro casa -->
+              <h5>Para aprobar este perro<b>chequeá esta casilla</b> y da click en guardar</h5>
+                {{form.aprobado}}
+                {{form.aprobado.label_tag}}
               <h5>Si el perro encontró casa, <b>por favor chequeá esta casilla</b> y da click en guardar</h5>
                 {% render_field form.encontro_casa placeholder="¿Encontro casa?" style="margin-bottom: 2em;" %}
                 {{form.encontro_casa.label_tag}}

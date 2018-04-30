@@ -43,8 +43,11 @@ class Perro(models.Model):
 	subido_el = models.DateTimeField(auto_now_add=True, auto_now=False)
 	actualizado_el = models.DateTimeField(auto_now=True, auto_now_add=False)
 
+    # moderacion aprobada
+	aprobado = models.BooleanField(default=False)
+
 	# #Imagen test
-	imagen = models.ImageField(upload_to='perros', null=False, blank=False)
+	imagen = models.ImageField(upload_to='perros', null=True, blank=True)
 	#imagen = S3UploadField(dest='example')
 
 	def __str__(self):

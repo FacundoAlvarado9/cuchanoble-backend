@@ -31,10 +31,22 @@ class PerroEditarForm(forms.ModelForm, forms.Form):
 			"tamano",
 			"estado",
 			'contacto',
-			'imagen',
 			'encontro_casa',
 		]
 
+class PerroModerarForm(forms.ModelForm, forms.Form):
+	class Meta:
+		model = Perro
+		fields = [
+			"direccion",
+			"sexo",
+			"edad",
+			"tamano",
+			"estado",
+			'contacto',
+			'encontro_casa',
+			'aprobado',
+		]
 
 
 
