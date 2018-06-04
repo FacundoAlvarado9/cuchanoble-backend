@@ -25,7 +25,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['cuchanoble.herokuapp.com', 'localhost', '127.0.0.1', '206.189.194.97']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '206.189.194.97', 'cuchanoble.org']
 
 
 # Application definition
@@ -106,20 +106,20 @@ WSGI_APPLICATION = 'cuchanoble.wsgi.application'
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
-# DATABASES = {
-#     'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-#  }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_db',
-        'USER': 'db_user',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',                      # Set to empty string for default.
-    }
-}
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+ }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'django_db',
+#         'USER': 'db_user',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '',                      # Set to empty string for default.
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -142,7 +142,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ES'
 
 TIME_ZONE = 'America/Argentina/Rio_Gallegos'
 

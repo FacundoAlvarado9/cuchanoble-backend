@@ -19,7 +19,7 @@ from rest_framework import status
 from .serializers import PerroSerializer
 
 # Variables de mensajes
-EXITO = 26
+EXITO = 25
 exitoAlSubir = '¡Subiste un perro con éxito! Se envió a moderación, estará listo cuanto antes'
 exitoAlEditar = '¡El perro ha sido modificado con éxito!'
 exitoAlModerar = 'El perro ha sido aprobado, ahora será mostrado en la lista'

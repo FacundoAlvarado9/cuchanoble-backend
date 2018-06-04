@@ -12,8 +12,9 @@
     {% get_providers as socialaccount_providers %}
 
     {% if socialaccount_providers %}
-    <p>{% blocktrans with site.name as site_name %}Inicia sesión para interactuar. Si no tienes una cuenta, <a href="{{ signup_url }}">crea una</a>
-    . O entra con facebook!{% endblocktrans %}</p>
+    <p>{% blocktrans with site.name as site_name %}Inicia sesión para ayudar a nuestros mejores amigos. </a>
+      ¡También podés entrar con Facebook!{% endblocktrans %}</p>
+
     <!--
     <div class="socialaccount_ballot">
 
@@ -41,9 +42,12 @@
       <button class="primaryAction waves-effect waves-light btn" type="submit">{% trans "Iniciar Sesión" %}</button>
     </form>
 
+    <br>
 
-    <a href="{% provider_login_url "facebook" method="oauth2" %}" class="waves-effect waves-light btn indigo darken-2">Registrate con Facebook</a>
-          <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu contraseña?" %}</a>
+  <a href="{{ signup_url }}" class="waves-effect waves-light btn">Crear cuenta</a>
+    <a href="{% provider_login_url "facebook" method="oauth2" %}" class="waves-effect waves-light btn indigo darken-2">Registrate o ingresá con Facebook</a>
+
+          <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "¿Olvidaste tu contraseña?" %}</a> -->
 
 </div>
 

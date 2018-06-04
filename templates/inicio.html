@@ -6,12 +6,14 @@
 <!-- Template inicio -->
 
 
-<div class="container">
+<div class="container" id="principal">
 <div class="container">
     <div class="valign-wrapper mainsection">
         <div class="center-align">
         <h1 class="center-align">¡Bienvenido a Cucha Noble!</h1>
+        <p class="center-align">El lugar donde los perros pueden encontrar una familia.</p>
         <a class="waves-effect waves-light btn" href="{% url "perros:lista" %}">Ver perros buscando familia</a>
+        <a class="waves-effect waves-light btn" href="{% url "perros:subir" %}">Publicá un perro</a>
         </div>
     </div>
 </div>
