@@ -146,7 +146,7 @@ def perros_moderacion_editar(request, pk=None):
 
 #Hace lista de todos los perros, o crea uno nuevo
 class perros_api_listar(generics.ListAPIView):
-	queryset = Perro.objects.filter(aprobado=False, encontro_casa=False)
+	queryset = Perro.objects.filter(aprobado=True, encontro_casa=False)
 	serializer_class = PerroSerializer #(queryset, many=True)
 
 	def perform_create(self, serializer):

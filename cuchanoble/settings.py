@@ -25,7 +25,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '206.189.194.97', 'cuchanoble.org']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '104.236.5.15', 'cuchanoble.org']
 
 
 # Application definition
@@ -209,7 +209,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # Eliminando paso intermedio al cerrar sesion
 ACCOUNT_LOGOUT_ON_GET =  True
-LOGIN_REDIRECT_URL = '/subir'
+LOGIN_REDIRECT_URL = '/perros/subir/'
 ACCOUNT_EMAIL_VERIFICATION = 'None'
 
 #Formulario personalizado de registro
