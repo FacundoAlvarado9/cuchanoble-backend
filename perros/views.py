@@ -152,15 +152,15 @@ class perros_api_listar(generics.ListAPIView):
 	def perform_create(self, serializer):
 		serializer.save
 
-# class perros_api(generics.ListCreateAPIView):
-#
-# 	queryset = Perro.objects.filter(aprobado=False, encontro_casa=False)
-# 	serializer_class = PerroSerializer #(queryset, many=True)
-#
-# 	def perform_create(self, serializer):
-# 		authentication_classes = (TokenAuthentication,)
-# 		permission_classes = (IsAuthenticated,)
-# 		serializer.save()
+class perros_api(generics.ListCreateAPIView):
+
+	queryset = Perro.objects.filter(aprobado=True, encontro_casa=False)
+	serializer_class = PerroSerializer #(queryset, many=True)
+
+	def perform_create(self, serializer):
+		authentication_classes = (TokenAuthentication,)
+		permission_classes = (IsAuthenticated,)
+		serializer.save()
 
 class perros_api_crear(generics.CreateAPIView):
 	authentication_classes = (TokenAuthentication,)

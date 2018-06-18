@@ -30,6 +30,7 @@ from .views import (
   perros_borrar_moderacion,
   perros_api_listar,
   perros_api_crear,
+  perros_api
   )
 
 
@@ -45,8 +46,9 @@ urlpatterns = [
 
     # RESTful API
     url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^perros/api/$', perros_api_listar.as_view()),
-    url(r'^perros/api/crear$', perros_api_crear.as_view()),
+    url(r'^perros/api/v1/$', perros_api_listar.as_view()),
+    url(r'^perros/api/crear/$', perros_api_crear.as_view()),
+    url(r'^perros/api/v2/$', perros_api.as_view()),
 
     # moderacion
     url(r'^perros/moderar/$', perros_moderacion, name='moderacion'),
