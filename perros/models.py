@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from author.decorators import with_author
 from s3upload.fields import S3UploadField
 
+from PIL import Image as Img
+
 
 # Create your models here.
 TAMANO_CHOICES = (
@@ -49,6 +51,18 @@ class Perro(models.Model):
 	# #Imagen test
 	imagen = models.ImageField(upload_to='perros', null=True, blank=True)
 	#imagen = S3UploadField(dest='example')
+
+	def save(self, *args, **kwargs):
+		if self.image:
+			img = Img.open(StringIO.StringIO(self.image.read()))
+			if img.mode != 'RGB':
+				img = img.convert('RGB')
+				img.thumbnail((self.image.width/1.5,self.image.height/1.5), Img.ANTIALIAS)
+				output = StringIO.StringIO()
+				img.save(output, format='JPEG', quality=60)
+				output.seek(0)
+				self.image= InMemoryUploadedFile(output,'ImageField', "%s.jpg" %self.image.name.split('.')[0], 'image/jpeg', output.len, None)
+				super(Images, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.direccion + "-" + self.estado
