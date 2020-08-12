@@ -33,7 +33,7 @@ from .views import (
   perros_api
   )
 
-
+app_name = 'perros'
 urlpatterns = [
 
    	#CRUD
