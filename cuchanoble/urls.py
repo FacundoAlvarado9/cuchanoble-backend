@@ -16,13 +16,22 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from django.urls import path, include
+
 from perros import views as perrosviews
 
+app_name = 'perros'
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',  include('perros.urls')),
+    path('accounts/', include('allauth.urls')),
+]
 
+"""
+app_name = 'cuchanoble'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include("perros.urls", namespace="perros")),
 	url(r'^accounts/', include('allauth.urls'),),
-
-
 ]
+"""

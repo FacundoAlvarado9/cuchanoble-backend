@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import models
 from django.views.generic.edit import DeleteView
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 
 from .models import Perro
 from .forms import PerroForm, PerroEditarForm, PerroModerarForm
